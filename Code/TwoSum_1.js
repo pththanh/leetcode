@@ -33,6 +33,22 @@ const twoSum = (nums, target) => {
   return result;
 };
 
+const twoSum1 = (nums, target) => {
+  let hashMap = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    hashMap.set(target - nums[i], i);
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    if (hashMap.has(nums[i]) && hashMap.get(nums[i]) !== i) {
+      return [hashMap.get(nums[i]), i];
+    }
+  }
+
+  return null;
+};
+
 testCase.forEach(({ nums, target }, index) => {
-  console.log("Index: ", index, twoSum(nums, target));
+  console.log("Index: ", index, twoSum1(nums, target));
 });
